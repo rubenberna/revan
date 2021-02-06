@@ -3,7 +3,7 @@ import { Form } from 'semantic-ui-react';
 import formStyles from '../styles/Form.module.css';
 import { server } from '../config/server';
 
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const LeadForm = () => {
   const [formState, setFormState] = useState({
@@ -17,7 +17,9 @@ const LeadForm = () => {
   const [errors, setErrors] = useState({
     email: false,
     firstName: false,
-    lastName: false
+    lastName: false,
+    phone: false,
+    description: false
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -32,7 +34,7 @@ const LeadForm = () => {
   };
 
   const validateEmail = () => {
-    const valid = emailRegex.test(String(formState.email).toLowerCase());
+    const valid = EMAIL_REGEX.test(String(formState.email).toLowerCase());
     setErrors({
       ...errors,
       email: !valid
@@ -40,14 +42,14 @@ const LeadForm = () => {
   };
 
   const checkRequiredFields = (formData) => {
-    const required = ['firstName', 'email', 'lastName'];
+    const required = Object.keys(formData);
     const errorsObj = {};
     required.forEach(field => {
       if (!formData[field]) {
         errorsObj[field] = true;
       }
       if (field === 'email' && formState.email) {
-        const valid = emailRegex.test(String(formData[field]).toLowerCase());
+        const valid = EMAIL_REGEX.test(String(formData[field]).toLowerCase());
         errorsObj.email = !valid;
       }
     });
@@ -95,23 +97,31 @@ const LeadForm = () => {
     setSubmitted(true);
   };
 
+  const getAttributes = (name) => {
+    return {
+      fluid: 'true',
+      error: errors[name],
+      onFocus: () => handleFocus(name),
+      name,
+      onChange: handleChange
+    }
+  }
+
   return (
     <div className={formStyles.paper}>
       <Form className={formStyles.form}>
         <Form.Group widths="equal">
-          <Form.Input fluid label="Voornaam" error={errors.firstName} onFocus={() => handleFocus('firstName')}
-                      name="firstName" placeholder="Voornaam" onChange={handleChange}/>
-          <Form.Input fluid label="Achternaam" error={errors.lastName} onFocus={() => handleFocus('lastName')}
-                      name="lastName" placeholder="Achternaam" onChange={handleChange}/>
+          <Form.Input label="Voornaam" placeholder="Voornaam" {...getAttributes('firstName')}/>
+          <Form.Input label="Achternaam" placeholder="Achternaam" {...getAttributes('lastName')}/>
         </Form.Group>
-        <Form.Input fluid label="Telefoon" name="phone" placeholder="Telefoon" onChange={handleChange}/>
+        <Form.Input label="Telefoon" placeholder="Telefoon" {...getAttributes('phone')}/>
         <Form.Input fluid label="Email" error={errors.email && {
           content: 'Gelieve een geldig e-mailadres in te geven',
           pointing: 'below',
         }} name="email" placeholder="Email" onChange={handleChange}
                     onBlur={validateEmail}/>
-        <Form.TextArea label="Mijn project" name="description" placeholder="Vertel ons meer over uw project..."
-                       onChange={handleChange}/>
+        <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..."
+                       {...getAttributes('description')}/>
         <div>
           <Form.Button color="green" onClick={handleSubmit}>Neem contact met mij op</Form.Button>
           {showMsg && <span>Dank u {formState.firstName}! We nemen spoedig contact op.</span>}

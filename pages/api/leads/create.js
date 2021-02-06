@@ -27,7 +27,8 @@ export default async function handler(req, res) {
     lastName,
     email,
     phone,
-    description
+    description,
+    timestamp: new Date()
   })
 
   res.status(200).json({message: "Created"});
