@@ -1,4 +1,4 @@
-import { server } from '../config';
+import { server } from '../config/server';
 import ArticlesList from '../components/ArticleList';
 import Banner from '../components/Banner';
 

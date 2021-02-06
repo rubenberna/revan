@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form } from 'semantic-ui-react';
 import formStyles from '../styles/Form.module.css';
+import { server } from '../config/server';
 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -64,17 +65,32 @@ const LeadForm = () => {
     return Object.values(errorsState).every(field => field === false);
   };
 
+  const createLead = async (formState) => {
+    return fetch(`${server}/api/leads/create`, {
+      method: 'POST',
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(formState)
+    })
+  }
+
   useEffect(() => {
     if (submitted) {
       if (canSubmit(errors)) {
         setShowMsg(true)
+        createLead(formState)
       } else {
         setSubmitted(false)
       }
     }
-  }, [submitted, errors])
+  }, [submitted, errors, formState])
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     checkRequiredFields(formState);
     setSubmitted(true);
   };
@@ -89,9 +105,12 @@ const LeadForm = () => {
                       name="lastName" placeholder="Achternaam" onChange={handleChange}/>
         </Form.Group>
         <Form.Input fluid label="Telefoon" name="phone" placeholder="Telefoon" onChange={handleChange}/>
-        <Form.Input fluid label="Email" error={errors.email} name="email" placeholder="Email" onChange={handleChange}
+        <Form.Input fluid label="Email" error={errors.email && {
+          content: 'Gelieve een geldig e-mailadres in te geven',
+          pointing: 'below',
+        }} name="email" placeholder="Email" onChange={handleChange}
                     onBlur={validateEmail}/>
-        <Form.TextArea label="Mijn project" name="description" placeholder="Tell us more about you..."
+        <Form.TextArea label="Mijn project" name="description" placeholder="Vertel ons meer over uw project..."
                        onChange={handleChange}/>
         <div>
           <Form.Button color="green" onClick={handleSubmit}>Neem contact met mij op</Form.Button>
