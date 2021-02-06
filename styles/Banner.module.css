@@ -1,0 +1,21 @@
+.banner {
+    height: 700px;
+    width: 100vw;
+    z-index: -99;
+    background: url("../public/banner.png");
+    background-size: cover;
+    display: flex;
+}
+
+.title {
+    color: #ffffff;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    font-size: 50px;
+}
+
+.ui.huge.header {
+    color: #ffffff;
+}
