@@ -129,7 +129,7 @@ const LeadForm = ({ position }) => {
                     onBlur={validateEmail}/>
         <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
         <div>
-          <Form.Button color="green" onClick={handleSubmit}>Neem contact met mij op</Form.Button>
+          <button onClick={handleSubmit}>Neem contact met mij op</button>
           {showMsg && <span>Dank u {formState.firstName}! We nemen spoedig contact op.</span>}
         </div>
       </Form>

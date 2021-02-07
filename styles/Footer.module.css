@@ -1,0 +1,51 @@
+.wrapper {
+    background-color: #84BD00;
+    height: 260px;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 250px repeat(2, 180px) 350px 80px;
+    grid-column-gap: 10px;
+    color: #ffffff;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer li {
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.footer a {
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+
+.footer a:hover {
+    color: #b9b2aa !important;
+}
+
+.logo {
+    padding-top: 20px;
+}
+
+.companyDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socialMedia {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+}
