@@ -3,6 +3,9 @@ import Banner from '../components/Banner';
 import Introduction from '../components/Introduction';
 import Advantages from '../components/Advantages';
 import Materials from '../components/Materials';
+import LastCTA from '../components/LastCTA';
+import Gallery from '../components/Gallery';
+import HowIsItMade from '../components/HowIsItMade';
 
 export default function Home ({ leads }) {
   console.log(leads);
@@ -12,6 +15,9 @@ export default function Home ({ leads }) {
       <Introduction/>
       <Advantages/>
       <Materials/>
+      <LastCTA/>
+      <Gallery/>
+      <HowIsItMade/>
     </div>
   );
 }

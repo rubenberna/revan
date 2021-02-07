@@ -1,0 +1,48 @@
+.wrapper {
+    margin: 80px 0;
+}
+
+.title {
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.gallery {
+    overflow: auto;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#CCC;
+}
+
+.gallery::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+    position: relative;
+}
+
+.link a {
+    background-color: #84BD00;
+    padding: 15px 22px;
+    color: #ffffff;
+    transition: .3s all;
+}
+
+.link a:hover {
+    background-color: #76a506;
+}

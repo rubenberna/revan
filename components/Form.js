@@ -5,7 +5,7 @@ import { server } from '../config/server';
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const LeadForm = () => {
+const LeadForm = ({ position }) => {
   const [formState, setFormState] = useState({
     firstName: undefined,
     lastName: undefined,
@@ -106,8 +106,16 @@ const LeadForm = () => {
     }
   }
 
+  const formPosition = position === 'right' ?
+    {
+      position: 'absolute',
+      right: '50px',
+      bottom: '5px'
+    } : {};
+
+
   return (
-    <div className={formStyles.paper}>
+    <div className={formStyles.paper} style={formPosition}>
       <Form className={formStyles.form}>
         <Form.Group widths="equal">
           <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
@@ -127,7 +135,6 @@ const LeadForm = () => {
       </Form>
     </div>
   );
-
 };
 
 export default LeadForm;

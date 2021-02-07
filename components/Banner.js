@@ -7,7 +7,7 @@ const Banner = () => {
       <div className={bannerStyles.title}>
         <h1 className={bannerStyles.title}>Natuurlijk en duurzame muurbekleding voor zowel interieur als exterieur.</h1>
       </div>
-      <Form/>
+      <Form position={'right'}/>
     </div>
   );
 };

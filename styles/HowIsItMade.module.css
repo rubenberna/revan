@@ -1,0 +1,49 @@
+.wrapper {
+    margin: 80px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.imageFrame {
+    background-image: url("../public/images/howIsItMade.png");
+    position: relative;
+    height: 400px;
+    width: 70%;
+    /*background-attachment: fixed;*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.link {
+    position: absolute;
+    background-color: #ffffff;
+    opacity: .8;
+    padding: 15px;
+    bottom: 20px;
+    right: 350px;
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.link:hover {
+    opacity: .9;
+}
+
+.link a {
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link a:hover {
+    color: inherit;
+}
+

@@ -1,9 +1,6 @@
 .paper {
     width: 600px;
     height: max-content;
-    position: absolute;
-    right: 50px;
-    bottom: 5px;
     background: #ffffff;
     border-radius: 5px;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
