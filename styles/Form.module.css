@@ -6,6 +6,13 @@
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
 }
 
+
+.floatRight {
+    position: absolute;
+    right: 50px;
+    bottom: -145px;
+}
+
 .form {
     padding: 25px 30px;
 }
@@ -19,6 +26,7 @@
     background: #84BD00;
     color: #ffffff;
     transition: .3s all;
+    border-radius: 0;
 }
 
 #formButton:hover {
@@ -32,3 +40,32 @@
 .error {
     color: #f57f17;
 }
+
+@media only screen and (max-width: 1024px){
+    .floatRight {
+        right: 50px;
+        bottom: -255px;
+        width: 400px;
+    }
+}
+@media only screen and (max-width: 768px){
+    .floatRight {
+        right: 30px;
+        bottom: -315px;
+        width: 280px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .paper {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 414px){
+    .floatRight {
+        bottom: -315px;
+    }
+}
+

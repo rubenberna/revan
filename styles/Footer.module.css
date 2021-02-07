@@ -45,7 +45,36 @@
 
 .socialMedia {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     padding-top: 20px;
+}
+
+.socialMedia a {
+    margin-right: 9px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .footer {
+        width: 100%;
+        grid-template-columns: 200px repeat(3, 150px) 90px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .companyDetails {
+        align-items: flex-start;
+    }
+    .companyDetails ul {
+        padding: 0;
+    }
+    .socialMedia {
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        padding: 40px 50px;
+    }
 }

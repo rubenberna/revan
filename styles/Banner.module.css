@@ -1,10 +1,10 @@
 .banner {
     height: 700px;
     width: 100vw;
-    z-index: -99;
     background: url("../public/images/banner.png");
     background-size: cover;
     display: flex;
+    position: relative;
 }
 
 .title {
@@ -18,4 +18,29 @@
 
 .ui.huge.header {
     color: #ffffff;
+}
+
+@media only screen and (max-width: 1024px){
+    .banner {
+        justify-content: center;
+        height: 500px;
+    }
+    .title {
+        width: 80%;
+        font-size: 35px;
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 414px){
+    .banner {
+        justify-content: center;
+        height: 400px;
+    }
+    .title {
+        width: 100%;
+        font-size: 30px;
+        margin-left: 0;
+        text-align: center;
+    }
 }

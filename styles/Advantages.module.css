@@ -29,3 +29,32 @@
     font-weight: 600;
     font-size: 16px;
 }
+
+@media only screen and (max-width: 600px){
+    .advantages {
+        padding: 30px;
+    }
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 20px;
+    }
+    .advantages span {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 414px){
+    .advantages {
+        margin-top: 40px;
+    }
+    .advantages span {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 20px;
+    }
+}

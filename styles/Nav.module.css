@@ -10,3 +10,10 @@
 .logo {
     margin-left: 100px;
 }
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        margin-left: 50px;
+        width: 200px;
+    }
+}

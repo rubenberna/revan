@@ -6,3 +6,19 @@
 .title {
     color: #84BD00;
 }
+
+@media only screen and (max-width: 600px){
+    .intro {
+        margin: 30px;
+        width: 40%;
+        height: max-content;
+    }
+}
+
+@media only screen and (max-width: 414px){
+    .intro {
+        margin: 30px;
+        width: 80%;
+        height: max-content;
+    }
+}

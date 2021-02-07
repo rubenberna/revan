@@ -10,9 +10,9 @@
 .imageFrame {
     background-image: url("../public/images/howIsItMade.png");
     position: relative;
-    height: 450px;
+    height: 350px;
     width: 70%;
-    /*background-attachment: fixed;*/
+    background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -45,6 +45,24 @@
 
 .link a:hover {
     color: inherit;
+}
+
+@media only screen and (max-width: 1024px) {
+    .imageFrame {
+        background-attachment: inherit;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .link {
+        right: 20%;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .link {
+        right: 11%;
+    }
 }
 
 

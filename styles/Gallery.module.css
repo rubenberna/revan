@@ -46,3 +46,27 @@
 .link a:hover {
     background-color: #76a506;
 }
+
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        margin-top: 130px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        margin-top: 150px;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .wrapper {
+        margin-top: 230px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .wrapper {
+        margin-top: 300px;
+    }
+}

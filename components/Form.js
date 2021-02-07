@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import formStyles from '../styles/Form.module.css';
 import { server } from '../config/server';
+import { useScreenSize } from '../utils/ScreenSize';
+import formStyles from '../styles/Form.module.css';
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const LeadForm = ({ position }) => {
+const LeadForm = ({ position, visible }) => {
+  const { width } = useScreenSize()
+
   const [formState, setFormState] = useState({
     firstName: undefined,
     lastName: undefined,
@@ -124,38 +127,47 @@ const LeadForm = ({ position }) => {
     }
   }
 
-  const formPosition = position === 'right' ?
-    {
-      position: 'absolute',
-      right: '50px',
-      bottom: '5px'
-    } : {};
-
+  const formClasses = () => {
+    return position === 'right' ? formStyles.floatRight : ''
+  }
 
   return (
-    <div className={formStyles.paper} style={formPosition}>
-      <Form className={formStyles.form}>
-        <Form.Group widths="equal">
-          <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
-          <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
-        </Form.Group>
-        <Form.Input label="Telefoon" placeholder="Telefoon" type={'number'} fluid {...getAttributes('phone')}/>
-        <Form.Input fluid label="Email" error={errors.email && {
-          content: 'Gelieve een geldig e-mailadres in te geven',
-          pointing: 'below',
-        }} name="email" placeholder="Email" onChange={handleChange}
-                    onBlur={validateEmail}/>
-        <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
-        <div>
-          <Button onClick={handleSubmit} id={formStyles.formButton} loading={loading}>
-            Neem contact met mij op
-          </Button>
-          <div>
-            {showMsg.message && <span className={formStyles[showMsg.type]}>{showMsg.message}</span>}
-          </div>
+    <>
+      {
+        visible &&
+        <div className={`${formStyles.paper} ${formClasses()}` }>
+          <Form className={formStyles.form}>
+            {
+              width > 768 ?
+                <Form.Group widths="equal">
+                  <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
+                  <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
+                </Form.Group>
+                :
+                <>
+                  <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
+                  <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
+                </>
+            }
+            <Form.Input label="Telefoon" placeholder="Telefoon" type={'number'} fluid {...getAttributes('phone')}/>
+            <Form.Input fluid label="Email" error={errors.email && {
+              content: 'Gelieve een geldig e-mailadres in te geven',
+              pointing: 'below',
+            }} name="email" placeholder="Email" onChange={handleChange}
+                        onBlur={validateEmail}/>
+            <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
+            <div>
+              <Button onClick={handleSubmit} id={formStyles.formButton} loading={loading}>
+                Neem contact met mij op
+              </Button>
+              <div>
+                {showMsg.message && <span className={formStyles[showMsg.type]}>{showMsg.message}</span>}
+              </div>
+            </div>
+          </Form>
         </div>
-      </Form>
-    </div>
+      }
+    </>
   );
 };
 
