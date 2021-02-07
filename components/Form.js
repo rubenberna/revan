@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import formStyles from '../styles/Form.module.css';
 import { server } from '../config/server';
 
@@ -23,7 +23,11 @@ const LeadForm = ({ position }) => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [showMsg, setShowMsg] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [showMsg, setShowMsg] = useState({
+    type: undefined,
+    message: undefined
+  });
 
   const handleChange = (evt) => {
     const value = evt.target.value;
@@ -68,7 +72,8 @@ const LeadForm = ({ position }) => {
   };
 
   const createLead = async (formState) => {
-    return fetch(`${server}/api/leads/create`, {
+    setLoading(true)
+    const res = await fetch(`${server}/api/leads/create`, {
       method: 'POST',
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -79,12 +84,25 @@ const LeadForm = ({ position }) => {
       },
       body: JSON.stringify(formState)
     })
+
+    setLoading(false)
+
+    if (res.status === 200) {
+      setShowMsg({
+        type: 'success',
+        message: `Dank u ${formState.firstName}! We nemen spoedig contact op.`
+      })
+    } else {
+      setShowMsg({
+        type: 'error',
+        message: `Er is iets fout gegaan`
+      })
+    }
   }
 
   useEffect(() => {
     if (submitted) {
       if (canSubmit(errors)) {
-        setShowMsg(true)
         createLead(formState)
       } else {
         setSubmitted(false)
@@ -121,7 +139,7 @@ const LeadForm = ({ position }) => {
           <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
           <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
         </Form.Group>
-        <Form.Input label="Telefoon" placeholder="Telefoon" fluid {...getAttributes('phone')}/>
+        <Form.Input label="Telefoon" placeholder="Telefoon" type={'number'} fluid {...getAttributes('phone')}/>
         <Form.Input fluid label="Email" error={errors.email && {
           content: 'Gelieve een geldig e-mailadres in te geven',
           pointing: 'below',
@@ -129,8 +147,12 @@ const LeadForm = ({ position }) => {
                     onBlur={validateEmail}/>
         <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
         <div>
-          <button onClick={handleSubmit}>Neem contact met mij op</button>
-          {showMsg && <span>Dank u {formState.firstName}! We nemen spoedig contact op.</span>}
+          <Button onClick={handleSubmit} id={formStyles.formButton} loading={loading}>
+            Neem contact met mij op
+          </Button>
+          <div>
+            {showMsg.message && <span className={formStyles[showMsg.type]}>{showMsg.message}</span>}
+          </div>
         </div>
       </Form>
     </div>

@@ -15,17 +15,20 @@
     justify-content: space-between;
 }
 
-.form button {
-    background-color: #84BD00;
-    padding: 15px 22px;
+#formButton {
+    background: #84BD00;
     color: #ffffff;
-    border: none;
     transition: .3s all;
 }
 
-.form button:hover {
+#formButton:hover {
     background-color: #76a506;
 }
-.form button:focus {
-    outline: none;
+
+.success {
+    color: #84BD00;
+}
+
+.error {
+    color: #f57f17;
 }

@@ -22,14 +22,18 @@ export default async function handler(req, res) {
 
   const docRef = db.collection('leads').doc(email)
 
-  await docRef.set({
-    firstName,
-    lastName,
-    email,
-    phone,
-    description,
-    timestamp: new Date()
-  })
+  try {
+    await docRef.set({
+      firstName,
+      lastName,
+      email,
+      phone,
+      description,
+      timestamp: new Date()
+    })
 
-  res.status(200).json({message: "Created"});
+    res.status(200).json({message: "Created"});
+  } catch (e) {
+    res.status(404).json({ message: e.message })
+  }
 }
