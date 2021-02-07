@@ -2,6 +2,7 @@ import { server } from '../config/server';
 import Banner from '../components/Banner';
 import Introduction from '../components/Introduction';
 import Advantages from '../components/Advantages';
+import Materials from '../components/Materials';
 
 export default function Home ({ leads }) {
   console.log(leads);
@@ -10,6 +11,7 @@ export default function Home ({ leads }) {
       <Banner/>
       <Introduction/>
       <Advantages/>
+      <Materials/>
     </div>
   );
 }

@@ -99,7 +99,6 @@ const LeadForm = () => {
 
   const getAttributes = (name) => {
     return {
-      fluid: 'true',
       error: errors[name],
       onFocus: () => handleFocus(name),
       name,
@@ -111,17 +110,16 @@ const LeadForm = () => {
     <div className={formStyles.paper}>
       <Form className={formStyles.form}>
         <Form.Group widths="equal">
-          <Form.Input label="Voornaam" placeholder="Voornaam" {...getAttributes('firstName')}/>
-          <Form.Input label="Achternaam" placeholder="Achternaam" {...getAttributes('lastName')}/>
+          <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
+          <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
         </Form.Group>
-        <Form.Input label="Telefoon" placeholder="Telefoon" {...getAttributes('phone')}/>
+        <Form.Input label="Telefoon" placeholder="Telefoon" fluid {...getAttributes('phone')}/>
         <Form.Input fluid label="Email" error={errors.email && {
           content: 'Gelieve een geldig e-mailadres in te geven',
           pointing: 'below',
         }} name="email" placeholder="Email" onChange={handleChange}
                     onBlur={validateEmail}/>
-        <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..."
-                       {...getAttributes('description')}/>
+        <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
         <div>
           <Form.Button color="green" onClick={handleSubmit}>Neem contact met mij op</Form.Button>
           {showMsg && <span>Dank u {formState.firstName}! We nemen spoedig contact op.</span>}
