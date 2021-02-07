@@ -40,7 +40,7 @@ const Materials = () => {
       <h2 className={materialsStyles.title}>4 gevelsystemen</h2>
       <div className={materialsStyles.display}>
         {materialsContent.map(material => (
-            <div className={materialsStyles.material}>
+            <div key={material.title} className={materialsStyles.material}>
               <Image src={material.imagePath} alt={material.alt} width={defaultWidth} height={defaultHeight}/>
               <div className={materialsStyles.materialInfo}>
                 <p className={materialsStyles.materialTitle}>{material.title}</p>

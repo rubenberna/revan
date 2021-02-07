@@ -9,7 +9,6 @@ import HowIsItMade from '../components/HowIsItMade';
 import Footer from '../components/Footer';
 
 export default function Home ({ leads }) {
-  console.log(leads);
   return (
     <div>
       <Banner/>
