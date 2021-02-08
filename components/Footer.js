@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Facebook, Instagram } from './Icons';
 import footerStyles from '../styles/Footer.module.css'
-import { useScreenSize } from '../utils/ScreenSize';
+import { useScreenSize } from '../utils/useScreenSize';
 
 const Footer = () => {
   const { width } = useScreenSize()

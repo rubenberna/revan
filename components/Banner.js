@@ -1,5 +1,5 @@
 import Form from './Form';
-import { useScreenSize } from '../utils/ScreenSize';
+import { useScreenSize } from '../utils/useScreenSize';
 import bannerStyles from '../styles/Banner.module.css';
 
 const Banner = () => {

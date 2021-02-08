@@ -9,6 +9,8 @@ import HowIsItMade from '../components/HowIsItMade';
 import Footer from '../components/Footer';
 
 export default function Home ({ leads }) {
+
+  console.log(leads);
   return (
     <div>
       <Banner/>
@@ -23,8 +25,8 @@ export default function Home ({ leads }) {
   );
 }
 
-// on build
-export const getStaticProps = async () => {
+// on request
+export const getServerSideProps = async () => {
   const res = await fetch(`${server}/api/leads/get`);
   const leads = await res.json();
 

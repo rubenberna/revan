@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import materialsStyles from '../styles/Materials.module.css'
-import { useScreenSize } from '../utils/ScreenSize';
+import { useScreenSize } from '../utils/useScreenSize';
 
 const defaultWidth = '200px';
 const defaultHeight = '100px';

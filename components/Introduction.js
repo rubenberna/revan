@@ -1,5 +1,5 @@
 import LeadForm from './Form';
-import { useScreenSize } from '../utils/ScreenSize';
+import { useScreenSize } from '../utils/useScreenSize';
 import introStyles from '../styles/Introduction.module.css';
 
 const Introduction = () => {
