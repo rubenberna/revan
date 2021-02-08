@@ -1,7 +1,9 @@
 .banner {
     height: 700px;
     width: 100vw;
-    background: url("../public/images/banner.png");
+    background-image: linear-gradient(rgba(64, 59, 74, .3), rgba(231, 233, 187, .3)),
+    url("../public/images/10.jpeg");
+    background-position: center center;
     background-size: cover;
     display: flex;
     position: relative;
