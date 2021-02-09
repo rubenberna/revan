@@ -7,6 +7,13 @@
     color: #84BD00;
 }
 
+@media only screen and (max-width: 812px){
+    .intro {
+        margin: 40px 0 80px 38px;
+        width: 35%;
+    }
+}
+
 @media only screen and (max-width: 600px){
     .intro {
         margin: 30px;

@@ -140,22 +140,22 @@ const LeadForm = ({ position, visible }) => {
             {
               width > 768 ?
                 <Form.Group widths="equal">
-                  <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
-                  <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
+                  <Form.Input label="Voornaam" placeholder="Voornaam" {...getAttributes('firstName')}/>
+                  <Form.Input label="Achternaam" placeholder="Achternaam" {...getAttributes('lastName')}/>
                 </Form.Group>
                 :
                 <>
-                  <Form.Input label="Voornaam" placeholder="Voornaam" fluid {...getAttributes('firstName')}/>
-                  <Form.Input label="Achternaam" placeholder="Achternaam" fluid {...getAttributes('lastName')}/>
+                  <Form.Input label="Voornaam" placeholder="Voornaam" {...getAttributes('firstName')}/>
+                  <Form.Input label="Achternaam" placeholder="Achternaam" {...getAttributes('lastName')}/>
                 </>
             }
-            <Form.Input label="Telefoon" placeholder="Telefoon" type={'number'} fluid {...getAttributes('phone')}/>
+            <Form.Input label="Telefoon" placeholder="Telefoon" type={'number'} {...getAttributes('phone')}/>
             <Form.Input fluid label="Email" error={errors.email && {
               content: 'Gelieve een geldig e-mailadres in te geven',
               pointing: 'below',
             }} name="email" placeholder="Email" onChange={handleChange}
                         onBlur={validateEmail}/>
-            <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." fluid {...getAttributes('description')}/>
+            <Form.TextArea label="Mijn project" placeholder="Vertel ons meer over uw project..." {...getAttributes('description')}/>
             <div>
               <Button onClick={handleSubmit} id={formStyles.formButton} loading={loading}>
                 Neem contact met mij op

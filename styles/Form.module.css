@@ -58,12 +58,15 @@
 
 @media only screen and (max-width: 600px){
     .paper {
-        width: 80%;
+        width: 50%;
         margin: 0 auto;
     }
 }
 
 @media only screen and (max-width: 414px){
+    .paper {
+        width: 80%;
+    }
     .floatRight {
         bottom: -315px;
     }
