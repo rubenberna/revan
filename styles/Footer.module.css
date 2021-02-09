@@ -61,6 +61,12 @@
     }
 }
 
+@media screen and (orientation:landscape) and (max-width: 812px){
+    .wrapper {
+        padding: 40px 20px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .companyDetails {
         align-items: flex-start;
