@@ -1,4 +1,3 @@
-import { server } from '../config/server';
 import Banner from '../components/Banner';
 import Introduction from '../components/Introduction';
 import Advantages from '../components/Advantages';
@@ -24,15 +23,3 @@ export default function Home ({ leads }) {
     </div>
   );
 }
-
-// on request
-export const getServerSideProps = async () => {
-  const res = await fetch(`${server}/api/leads/get`);
-  const leads = await res.json();
-
-  return {
-    props: {
-      leads
-    }
-  };
-};
